@@ -53,7 +53,9 @@ void draw(){
   for(int i=0;i<320;i++){
     for(int j=0;j<240;j++){
       if(buffer[i][j] != depth_data[i][j]){
+        fill(200);
         rect(i,j,1,1);//show small rectangle.
+        noFill();
       }
     }
   }
