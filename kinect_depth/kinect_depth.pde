@@ -15,6 +15,11 @@ int[][] depth_data = new int[320][240];
 int[][] buffer = new int[320][240];
 int t = 0;
 
+int w_width = 340;
+int w_height = 240;
+
+RawDepth rd = new RawDepth(w_width, w_height);
+
 void setup(){
   size(320,240);
   kinect = new Kinect(this);
@@ -25,9 +30,9 @@ void setup(){
   //get raw depth data.
   int[] d = kinect.getRawDepth();
   //initialized buffer by first frame.
-  for(int i=0;i<320;i++){
-    for(int j=0;j<240;j++){
-      if(t <= 320*240){
+  for(int i=0;i<w_width;i++){
+    for(int j=0;j<w_height;j++){
+      if(t < 320){
         buffer[i][j] = d[t];
         t++; 
       }
@@ -41,17 +46,17 @@ void draw(){
   //get raw depth data.
   int[] depth = kinect.getRawDepth();
   //separate 2-dimentional array.
-  for(int i=0;i<320;i++){
-    for(int j=0;j<240;j++){
-      if(t < 600*600){
+  for(int i=0;i<w_width;i++){
+    for(int j=0;j<w_height;j++){
+      if(t < 320){
         depth_data[i][j] = depth[t];
         t++;
       }
     }
   }
   
-  for(int i=0;i<320;i++){
-    for(int j=0;j<240;j++){
+  for(int i=0;i<w_width;i++){
+    for(int j=0;j<w_height;j++){
       if(buffer[i][j] != depth_data[i][j]){
         fill(200);
         rect(i,j,1,1);//show small rectangle.
