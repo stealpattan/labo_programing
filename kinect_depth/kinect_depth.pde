@@ -13,23 +13,24 @@ void setup(){
   kinect.initDepth();
   size(640,480);
   int[] d = kinect.getRawDepth();
-  print(d.length);// -> result(307200) so, equal to 640 x 480;
+//  print(d.length);// -> result(307200) so, equal to 640 x 480;
   rDepth = new PImage(kinect.width, kinect.height);//We can draw on the sketch to use "PImage".
-  
-  //check depth datas
-  for(int i=0;i<d.length;i++){
-    if(d[i] > 200 /*radom*/){
-      rDepth.pixels[i] = color(200);
-    }
-    else if(d[i] < 100 && d[i] >0){
-      rDepth.pixels[i] = color(100);
-    }
-    else{
-      rDepth.pixels[i] = color(20);
-    }
-  }
+  //for(int i=0;i<20;i++){
+  //  print("raw depth data :" + d[i] + "\n");
+  //}  
 }
 
 void draw(){
-  
+	int[] d = kinect.getRawDepth();
+
+  for (int i=0; i<d.length; i++) {
+    if(d[i] != 0){
+      rDepth.pixels[i] = color(200);
+    }
+    else{
+  	  rDepth.pixels[i] = color(0);
+    }
+  }
+  rDepth.updatePixels();
+  image(rDepth,kinect.width,0);
 }
