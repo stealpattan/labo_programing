@@ -7,7 +7,13 @@ import org.openkinect.tests.*;
 
 Kinect kinect;
 
-void set(){
+void setup(){
   kinect = new Kinect(this);
-  
+  kinect.initDepth();
+  size(320,240);
+  int[] d = kinect.getRawDepth();
+}
+
+void draw(){
+  //print("hoge \n");
 }
