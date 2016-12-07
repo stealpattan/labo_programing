@@ -18,7 +18,7 @@ void setup(){
 void draw(){
 	int[] d = kinect.getRawDepth();
   for (int i=0; i<d.length; i++) {
-    rDepth.pixels[i] = color(d[i]/256);
+    rDepth.pixels[i] = color(d[i]%256);
   }
   rDepth.updatePixels();
   image(rDepth,0,0);
