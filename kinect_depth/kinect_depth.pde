@@ -13,7 +13,7 @@ void setup(){
   kinect.initDepth();
   size(640,480);
   int[] d = kinect.getRawDepth();
-  print(d.length);
+  print(d.length);// -> result(307200) so, equal to 640 x 480;
   rDepth = new PImage(kinect.width, kinect.height);
 }
 
