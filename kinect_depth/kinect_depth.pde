@@ -32,5 +32,5 @@ void draw(){
     }
   }
   rDepth.updatePixels();
-  image(rDepth,kinect.width,0);
+  image(rDepth,0,0);
 }
