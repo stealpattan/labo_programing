@@ -22,17 +22,17 @@ void draw(){
 	int[] d = kinect.getRawDepth();
 
   //get defference.and fill the color.
-  for(int i=0;i<d.length;i++){
-    if(buffer[i] != d[i]){
-      rDepth.pixels[i] = color(200);
-    }
-    else{
-      rDepth.pixels[i] = color(0);
-    }
-  }
-  //for (int i=0; i<d.length; i++) {
-  //  rDepth.pixels[i] = color(d[i]%256);
+  //for(int i=0;i<d.length;i++){
+  //  if(buffer[i] != d[i]){
+  //    rDepth.pixels[i] = color(200);
+  //  }
+  //  else{
+  //    rDepth.pixels[i] = color(0);
+  //  }
   //}
+  for (int i=0; i<d.length; i++) {
+    rDepth.pixels[i] = color(d[i]%256);
+  }
   rDepth.updatePixels();
   image(rDepth,0,0);
   
