@@ -30,8 +30,8 @@ void draw(){
   //    rDepth.pixels[i] = color(0);
   //  }
   //}
-  for (int i=0; i<d.length; i++) {
-    rDepth.pixels[i] = color(d[i]%256);
+  for (int i=0; i<buffer.length; i++) {
+    rDepth.pixels[i] = color(buffer[i]%256);
   }
   rDepth.updatePixels();
   image(rDepth,0,0);
