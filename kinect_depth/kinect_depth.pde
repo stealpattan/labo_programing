@@ -25,8 +25,11 @@ void setup(){
 void draw(){
   int[] d = kinect.getRawDepth();
   for (int i=0; i<d.length; i++) {
-    if(d[i] > 1000){
-      rDepth.pixels[i] = color(d[i]%255);
+    if(d[i] > 1000 && d[i] < 1200){
+      rDepth.pixels[i] = color(200);
+    }
+    else{
+      rDepth.pixels[i] = color(0);
     }
   }
   rDepth.updatePixels();
