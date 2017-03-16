@@ -42,15 +42,13 @@ void draw(){
 public void c_get(int x, int y){
   int idx = x + y * color_kinect.rgbImage().width;
   color c = color_kinect.rgbImage().pixels[idx];
-  //println( "RED = " + red( c ) + ", GREEN = " + green( c ) + ", BLUE = " + blue( c ) + ", Hue = " + hue( c ) + ", Saturation = " + saturation( c ) + ", Brightness = " + brightness( c ) );
+  
   if(red( c )>=170 && blue( c ) <= 10){
-    //println( "yellow" );
     //colorMode = "orange";
     //color_fill(x, y);
     pixels[x + y * width] = color(255,255,0);
   }
   if(red( c ) <= blue( c )+10 && green( c ) >= 90 && saturation( c ) >= 75){
-    //println( "green" );
     //colorMode = "blue";
     //color_fill(x, y);
     pixels[x + y * width] = color(0,255,0);
