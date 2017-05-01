@@ -30,7 +30,7 @@ void draw(){
   loadPixels();
   for(int y=0;y<color_kinect.depthHeight();y++){
     for(int x=0;x<color_kinect.depthWidth();x++){
-      int d = depthMap[x + y*width];
+      int d = depthMap[x + y*640];
       if(1000<d && d<1200){
         //pixels[x + y*width] = color(255,0,0);
         c_get(x,y);
