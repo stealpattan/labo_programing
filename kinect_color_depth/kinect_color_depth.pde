@@ -2,15 +2,13 @@ import SimpleOpenNI.*;
 SimpleOpenNI color_kinect;
 
 int i, j, k, l, p = 0;
-int window_size;
 String colorMode = "blue" ;
 float r, g, bpix, opix = 0;
 PImage img;
 color blue = color(0, 0, 255), orange = color(255, 133, 0); 
 
 void setup(){
-  size(1280,960);
-  window_size = 1280;
+  size(1920,1440);
   
   color_kinect = new SimpleOpenNI(this);
   color_kinect.enableDepth();
@@ -38,30 +36,31 @@ void draw(){
     }
   }
   updatePixels();
-  displayColorRatio();
+  //Under code is little bit wrong, because position is wrong.
+  //displayColorRatio();
 }
 
 public void c_get(int x, int y){
   int idx = x + y * color_kinect.rgbImage().width;
   color c = color_kinect.rgbImage().pixels[idx];
-  x = x * 2;
-  y = y * 2;
+  x = x * 3;
+  y = y * 3;
   
   if(red( c )>=170 && blue( c ) <= 10){
     //colorMode = "orange";
     //color_fill(x, y);
-    for(int j=y;j<(y+2);j++){
-      for(int i=x;i<(x+2);i++){
-        pixels[i + j * window_size] = color(255,255,0);
+    for(int j=y;j<(y+3);j++){
+      for(int i= width - (x + 3);i<width - x;i++){
+        pixels[i + j * width] = color(255,255,0);
       }
     }
   }
   if(red( c ) <= blue( c )+10 && green( c ) >= 90 && saturation( c ) >= 75){
     //colorMode = "blue";
     //color_fill(x, y);
-    for(int j=y;j<(y+2);j++){
-      for(int i=x;i<(x+2);i++){
-        pixels[i + j * window_size] = color(0,255,0);
+    for(int j=y;j<(y+3);j++){
+      for(int i= width - (x + 3);i< width - x;i++){
+        pixels[i + j * width] = color(0,255,0);
       }
     }
   } 
